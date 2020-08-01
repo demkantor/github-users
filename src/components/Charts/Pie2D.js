@@ -31,7 +31,7 @@ const Pie2D = ({ data }) => {
             showShadow: 0,
             showPlotBorder: 0,
             paletteColors:
-                "#2caeba, #5D62B5, #FFC533, #F2726F, #8d6e63, #1de9b6, #6E80CA, #ff2501", 
+                "#2caeba, #5D62B5, #FFC533, #F2726F, #8d6e63, #1de9b6, #6E80CA, #ff2501, #d21533, #563451" , 
             use3DLighting: 0,
             useDataPlotColorForLabels: 0,
             bgColor: "#FFFFFF",
