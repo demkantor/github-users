@@ -23,7 +23,7 @@ const Card = () => {
                 <img src={avatar_url} alt={name} />
                 <div>
                     <h4>{name}</h4>
-                    <p>@{twitter_username || 'twitter'}</p>
+                    <p title={`${name}'s twitter handle`}>@{twitter_username || 'twitter'}</p>
                 </div>
                 <a title={`${name}'s GitHub`} href={html_url} target="__blank" rel="noopener noreffer">
                     follow
