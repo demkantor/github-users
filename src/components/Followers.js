@@ -71,7 +71,7 @@ const Wrapper = styled.article
             column-gap: 1rem;
             img {
                 height: 100%;
-                width: 45px;
+                width: 55px;
                 border-radius: 50%;
                 object-fit: cover;
             }

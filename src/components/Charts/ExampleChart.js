@@ -1,54 +1,51 @@
 // STEP 1 - Include Dependencies
 // Include react
 import React from "react";
-
 // Include the react-fusioncharts component
 import ReactFC from "react-fusioncharts";
-
 // Include the fusioncharts library
 import FusionCharts from "fusioncharts";
-
 // Include the chart type
-import Column2D from "fusioncharts/fusioncharts.charts";
-
+import Chart from "fusioncharts/fusioncharts.charts";
 // Include the theme as fusion
 import FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
 
+
 // Adding the chart and theme as dependency to the core fusioncharts
-ReactFC.fcRoot(FusionCharts, Column2D, FusionTheme);
+ReactFC.fcRoot(FusionCharts, Chart, FusionTheme);
 
 // STEP 2 - Chart Data
 const chartData = [
     {
-        label: "Venezuela",
+        label: "JavaScript",
         value: "290"
     },
     {
-        label: "Saudi",
+        label: "CSS",
         value: "260"
     },
     {
-        label: "Canada",
+        label: "HTML",
         value: "180"
     },
     {
-        label: "Iran",
+        label: "Vue",
         value: "140"
     },
     {
-        label: "Russia",
+        label: "Python",
         value: "115"
     },
     {
-        label: "UAE",
+        label: "Dart",
         value: "100"
     },
     {
-        label: "US",
+        label: "PHP",
         value: "30"
     },
     {
-        label: "China",
+        label: "Rust",
         value: "30"
     }
 ];
@@ -56,20 +53,20 @@ const chartData = [
 // STEP 3 - Creating the JSON object to store the chart configurations
 const chartConfigs = {
     type: "column2d", // The chart type
-    width: "700", // Width of the chart
+    width: "400", // Width of the chart
     height: "400", // Height of the chart
     dataFormat: "json", // Data type
     dataSource: {
         // Chart Configuration
         chart: {
         //Set the chart caption
-        caption: "Countries With Most Oil Reserves [2017-18]",
+        caption: "Most Common Coding Languages of this user",
         //Set the chart subcaption
-        subCaption: "In MMbbl = One Million barrels",
+        subCaption: "as percentage of public repos",
         //Set the x-axis name
-        xAxisName: "Country",
+        xAxisName: "Coding Language",
         //Set the y-axis name
-        yAxisName: "Reserves (MMbbl)",
+        yAxisName: "Percent of use",
         numberSuffix: "K",
         //Set the theme for your chart
         theme: "fusion"
