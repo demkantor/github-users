@@ -16,10 +16,11 @@ const Doughnut2d = ({ data }) => {
         dataFormat: "json",
         dataSource: {
             chart: {
-            caption: "Languages",
-            subCaption: "as percentage of public repos main language",
-            pieRadius: '65%',
-            numberSuffix: "%",
+            caption: "Stars Per Languages",
+            subCaption: "five most stared languages",
+            pieRadius: "65%",
+            doughnutRadius: '65%',
+            showPercentValues: 0,
             captionFontColor: "#102a42",
             captionFontBold: 0,
             captionFontSize: 20,

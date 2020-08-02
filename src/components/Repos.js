@@ -7,34 +7,45 @@ import { ExampleChart, Pie2D, Column3D, Bar3D, Doughnut2D } from './Charts';
 const Repos = () => {
     const { repos } = useContext(GithubContext);
 
-    let languages = repos.reduce((total, item) => {
-        const { language } = item;
+    const languages = repos.reduce((total, item) => {
+        const { language, stargazers_count } = item;
         if (!language) {
             return total;
         };
         if (!total[language]) {
-            total[language] = { label: language, value: 1 };
+            total[language] = { label: language, value: 1, stars: stargazers_count };
         } else {
-            total[language] = {...total[language], value: total[language].value + 1}
+            total[language] = {
+                ...total[language], 
+                value: total[language].value + 1,
+                stars: total[language].stars + stargazers_count
+            }
         };
-        console.log(language)
+        // console.log(language)
         return total
     }, {})
 
     // turn languges object back into an array of objects and sort by largest
     // only take top ten languages and remove any others
-    languages = Object.values(languages).sort((small, large)=>{
+    const mostUsed = Object.values(languages).sort((small, large)=>{
         return (large.value - small.value);
     }).slice(0, 10);
-    console.log(languages);
 
+    // sort by largest star count, move stars to value position for chart
+    const mostPopular = Object.values(languages).sort((small, large) => {
+        return large.stars - small.stars;
+    }).map((item) => {
+        return { ...item, value:item.stars }
+    }).slice(0, 5);
+
+    console.log(mostPopular)
     return (
         <section className="section">
             <Wrapper className="section-center">
-                <Pie2D data={languages} />
-                <Doughnut2D data={languages} />
-                <Bar3D data={languages} />
-                <Column3D data={languages} />
+                <Pie2D data={mostUsed} />
+                <Doughnut2D data={mostPopular} />
+                <Bar3D data={mostUsed} />
+                <Column3D data={mostUsed} />
             </Wrapper>
         </section>
     );
