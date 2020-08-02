@@ -7,12 +7,12 @@ import { GithubContext } from '../context/context';
 const Search = () => {
 
     const [user, setUser] = useState('');
-    const { requests, error } = useContext(GithubContext);
+    const { error, requests, searchGithub } = useContext(GithubContext);
 
     const handleSubmit = (event) => {
         event.preventDefault();
         if(user) {
-
+            searchGithub(user);
         };
     };
 

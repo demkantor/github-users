@@ -33,12 +33,30 @@ const GithubProvider = ({ children }) => {
         };
     };
 
+    const searchGithub = async (user) => {
+        toggleError();
+        try {
+            const response = await axios(`${rootUrl}/users/${user}`);
+            if(response) {
+                setGithubUser(response.data);
+            };
+        } catch (error) {
+            // if error is due to no user
+            if(error.response.data.message === 'Not Found') {
+                console.log('who')
+                toggleError(true, 'There is no GitHub user with that user name, please try again...');
+            } else {
+                console.error('error fetting user', error);
+            };
+        };
+    };
+
     const toggleError = (show = false, msg = "") => {
         setError({ show, msg });
     };
 
     return (
-        <GithubContext.Provider value={{ error, followers, githubUser, repos, requests }}>
+        <GithubContext.Provider value={{ error, followers, githubUser, searchGithub, repos, requests }}>
             { children }
         </GithubContext.Provider>
     );
