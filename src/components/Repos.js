@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { GithubContext } from '../context/context';
-import { ExampleChart, Pie2D, Column3D, Bar3D, Doughnut2D } from './Charts';
+import { ExampleChart, Pie2D, Column2D, Bar2D, Doughnut2D } from './Charts';
 
 
 const Repos = () => {
@@ -38,14 +38,30 @@ const Repos = () => {
         return { ...item, value:item.stars }
     }).slice(0, 5);
 
-    console.log(mostPopular)
+    // pull stars and forks data from repos
+    let { stars, forks } = repos.reduce((total, item) => {
+        const { stargazers_count, name, forks } = item;
+        total.stars[stargazers_count] = { label: name, value: stargazers_count };
+        total.forks[forks] = { label: name, value: forks };
+        return total;
+    }, {
+        stars:{}, forks:{}
+    });
+
+    // turn stars and forks objects into arrays, get the largest 5 and sort
+    stars = Object.values(stars).slice(-5).reverse();
+    forks = Object.values(forks).slice(-5).reverse();
+
+    console.log(stars);
+    console.log(mostPopular);
+
     return (
         <section className="section">
             <Wrapper className="section-center">
                 <Pie2D data={mostUsed} />
+                <Bar2D data={forks} />
                 <Doughnut2D data={mostPopular} />
-                <Bar3D data={mostUsed} />
-                <Column3D data={mostUsed} />
+                <Column2D data={stars} />
             </Wrapper>
         </section>
     );

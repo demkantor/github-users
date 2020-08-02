@@ -6,19 +6,21 @@ import FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
 
 ReactFC.fcRoot(FusionCharts, Chart, FusionTheme);
 
-const Bar3D = ({ data }) => {
+const Column2D = ({ data }) => {
     
     const chartConfigs = {
-        type: "bar2d",
+        type: "column2d",
         width: "100%",
         height: "400",
         dataFormat: "json",
         dataSource: {
             chart: {
-            caption: "Languages",
+            caption: "Most Popular Language",
             subCaption: "as percentage of public repos main language",
-            pieRadius: '65%',
-            numberSuffix: "%",
+            yAxisName: "Stars",
+            xAxisName: "Repos",
+            yAxisNameFontSize: 16,
+            xAxisNameFontSize: 16,
             captionFontColor: "#102a42",
             captionFontBold: 0,
             captionFontSize: 20,
@@ -28,6 +30,9 @@ const Bar3D = ({ data }) => {
             baseFontSize: 16,
             baseFontColor: "#617d98",
             smartLineColor: "#617d98",
+            showCanvasBorder: 0,
+            showAlternateHGridColor: 0,
+            usePlotGradientColor: 0,
             showShadow: 0,
             showPlotBorder: 0,
             paletteColors:
@@ -47,4 +52,4 @@ const Bar3D = ({ data }) => {
     );
 };
 
-export default Bar3D;
+export default Column2D;

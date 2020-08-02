@@ -6,18 +6,21 @@ import FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
 
 ReactFC.fcRoot(FusionCharts, Chart, FusionTheme);
 
-const Column3D = ({ data }) => {
+const Bar2D = ({ data }) => {
     
     const chartConfigs = {
-        type: "column2d",
+        type: "bar2d",
         width: "100%",
         height: "400",
         dataFormat: "json",
         dataSource: {
             chart: {
-            caption: "Languages",
+            caption: "Most Forked",
             subCaption: "as percentage of public repos main language",
-            pieRadius: '65%',
+            yAxisName: "Forks",
+            xAxisName: "Repos",
+            yAxisNameFontSize: 16,
+            xAxisNameFontSize: 16,
             numberSuffix: "%",
             captionFontColor: "#102a42",
             captionFontBold: 0,
@@ -47,4 +50,4 @@ const Column3D = ({ data }) => {
     );
 };
 
-export default Column3D;
+export default Bar2D;
