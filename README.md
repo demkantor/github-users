@@ -7,3 +7,4 @@
     React
     FusionCharts
     GitHub API
+    0Auth authentication

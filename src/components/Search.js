@@ -1,11 +1,44 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 import { MdSearch } from 'react-icons/md';
 import { GithubContext } from '../context/context';
 
 
 const Search = () => {
-    return <h2>search component</h2>;
+
+    const [user, setUser] = useState('');
+    const { requests } = useContext(GithubContext);
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        if(user) {
+
+        };
+    };
+
+
+    return (
+        <section className="section">
+            <Wrapper className="section-center">
+                <form onSubmit={handleSubmit}>
+                    <div className="form-control">
+                        <MdSearch />
+                        <input 
+                            type="text" 
+                            placeholder="enter github user..." 
+                            value={user} 
+                            onChange={(event)=>setUser(event.target.value)} />
+                        <button 
+                            type="submit" 
+                            disabled={requests > 0 ? false : true}>
+                                Search
+                        </button>
+                    </div>
+                </form>
+                <h3>requests: { requests } / 60</h3>
+            </Wrapper>
+        </section>
+    );
 };
 
 const Wrapper = styled.div
@@ -54,6 +87,11 @@ const Wrapper = styled.div
                 cursor: pointer;
                 &:hover {
                     background: var(--clr-primary-8);
+                    color: var(--clr-primary-1);
+                }
+                &:disabled {
+                    cursor: not-allowed;
+                    background: var(--clr-grey-6);
                     color: var(--clr-primary-1);
                 }
             }
