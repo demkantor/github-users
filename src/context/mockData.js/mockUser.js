@@ -17,7 +17,7 @@ export default {
     received_events_url:	"https://api.github.com/users/demkantor/received_events",
     type:	"User",
     site_admin:	false,
-    name:	"demkantor",
+    name:	"David Kantor",
     company:	null,
     blog:	"https://www.demkantor.com/",
     location:	"minneapolis, mn",

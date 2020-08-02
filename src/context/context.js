@@ -40,6 +40,19 @@ const GithubProvider = ({ children }) => {
             const response = await axios(`${rootUrl}/users/${user}`);
             if(response) {
                 setGithubUser(response.data);
+                const { login, followers_url } = response.data;
+                try {
+                    const responseRepo = await axios(`${rootUrl}/users/${login}/repos?per_page=100`)
+                    setRepos(responseRepo.data);
+                } catch (error) {
+                    console.error('error fetching user repos', error);
+                };
+                try {
+                    const responseFollowers = await axios(`${followers_url}?per_page=100`);
+                    setFollowers(responseFollowers.data);
+                } catch (error) {
+                    console.error('error fetching user followers', error);
+                };
             };
             checkRequests();
             setIsLoading(false);

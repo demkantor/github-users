@@ -16,12 +16,11 @@ const Bar2D = ({ data }) => {
         dataSource: {
             chart: {
             caption: "Most Forked",
-            subCaption: "as percentage of public repos main language",
+            subCaption: "",
             yAxisName: "Forks",
             xAxisName: "Repos",
             yAxisNameFontSize: 16,
             xAxisNameFontSize: 16,
-            numberSuffix: "%",
             captionFontColor: "#102a42",
             captionFontBold: 0,
             captionFontSize: 20,

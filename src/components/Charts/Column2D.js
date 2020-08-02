@@ -16,7 +16,7 @@ const Column2D = ({ data }) => {
         dataSource: {
             chart: {
             caption: "Most Popular Language",
-            subCaption: "as percentage of public repos main language",
+            subCaption: "",
             yAxisName: "Stars",
             xAxisName: "Repos",
             yAxisNameFontSize: 16,
