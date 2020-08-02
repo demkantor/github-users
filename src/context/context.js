@@ -13,7 +13,7 @@ const GithubProvider = ({ children }) => {
     const [repos , setRepos] = useState(mockRepos);
     const [followers , setFollowers] = useState(mockFollowers);
     const [requests, setRequests] = useState(0);
-    const [loading, setLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState({show: false, msg: ''});
 
     useEffect(()=> {
@@ -35,11 +35,14 @@ const GithubProvider = ({ children }) => {
 
     const searchGithub = async (user) => {
         toggleError();
+        setIsLoading(true);
         try {
             const response = await axios(`${rootUrl}/users/${user}`);
             if(response) {
                 setGithubUser(response.data);
             };
+            checkRequests();
+            setIsLoading(false);
         } catch (error) {
             // if error is due to no user
             if(error.response.data.message === 'Not Found') {
@@ -56,7 +59,7 @@ const GithubProvider = ({ children }) => {
     };
 
     return (
-        <GithubContext.Provider value={{ error, followers, githubUser, searchGithub, repos, requests }}>
+        <GithubContext.Provider value={{ error, followers, githubUser, isLoading, searchGithub, repos, requests }}>
             { children }
         </GithubContext.Provider>
     );

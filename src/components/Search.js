@@ -7,7 +7,7 @@ import { GithubContext } from '../context/context';
 const Search = () => {
 
     const [user, setUser] = useState('');
-    const { error, requests, searchGithub } = useContext(GithubContext);
+    const { error, isLoading, requests, searchGithub } = useContext(GithubContext);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -35,7 +35,7 @@ const Search = () => {
                             onChange={(event)=>setUser(event.target.value)} />
                         <button 
                             type="submit" 
-                            disabled={requests > 0 ? false : true}>
+                            disabled={(requests < 0 || isLoading) ? true : false}>
                                 Search
                         </button>
                     </div>
