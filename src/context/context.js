@@ -16,6 +16,10 @@ const GithubProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState({show: false, msg: ''});
 
+    useEffect(() => {
+        checkRequests();
+    }, []);
+
     const checkRequests = async () => {
         try {
             const requests = await axios(`${rootUrl}/rate_limit`);
@@ -67,7 +71,7 @@ const GithubProvider = ({ children }) => {
         setError({ show, msg });
     };
 
-    useEffect(checkRequests, []);
+    
 
     return (
         <GithubContext.Provider value={{ error, followers, githubUser, isLoading, searchGithub, repos, requests }}>

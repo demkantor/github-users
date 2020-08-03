@@ -40,7 +40,9 @@ const Search = () => {
                         </button>
                     </div>
                 </form>
-                <h3>requests: { requests } / 60</h3>
+                <h3 title="GitHub limits 60 requests per hour, each search takes three requests">
+                    requests: { requests } / 60
+                </h3>
             </Wrapper>
         </section>
     );

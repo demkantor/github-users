@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { GithubContext } from '../context/context';
-import { ExampleChart, Pie2D, Column2D, Bar2D, Doughnut2D } from './Charts';
+import { Bar2D, Column2D, Doughnut2D, Pie2D } from './Charts';
 
 
 const Repos = () => {
@@ -48,12 +48,30 @@ const Repos = () => {
         stars:{}, forks:{}
     });
 
+    // let mostStars = repos.reduce((total, item) => {
+    //     const { stargazers_count, name, forks } = item;
+    //     if (!stargazers_count) {
+    //         return total;
+    //     };
+    //     if (!total[stargazers_count]) {
+    //         total[stargazers_count] = { label: name, value: 1, forks };
+    //     } else {
+    //         total[stargazers_count] = {
+    //             ...total[stargazers_count], 
+    //             value: total[stargazers_count].value + 1,
+    //             forks: total[stargazers_count].forks + forks
+    //         }
+    //     };
+    //     console.log(stargazers_count)
+    //     return total
+    // }, {})
+
     // turn stars and forks objects into arrays, get the largest 5 and sort
     stars = Object.values(stars).slice(-5).reverse();
     forks = Object.values(forks).slice(-5).reverse();
 
-    console.log(stars);
-    console.log(mostPopular);
+    // console.log(stars);
+    // console.log(mostPopular);
 
     return (
         <section className="section">
