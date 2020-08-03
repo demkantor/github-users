@@ -16,10 +16,6 @@ const GithubProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState({show: false, msg: ''});
 
-    useEffect(()=> {
-        checkRequests();
-    }, []);
-
     const checkRequests = async () => {
         try {
             const requests = await axios(`${rootUrl}/rate_limit`);
@@ -40,9 +36,9 @@ const GithubProvider = ({ children }) => {
             const response = await axios(`${rootUrl}/users/${user}`);
             if(response) {
                 setGithubUser(response.data);
-                const { login, followers_url } = response.data;
+                const { followers_url, repos_url } = response.data;
                 try {
-                    const responseRepo = await axios(`${rootUrl}/users/${login}/repos?per_page=100`)
+                    const responseRepo = await axios(`${repos_url}?per_page=100`)
                     setRepos(responseRepo.data);
                 } catch (error) {
                     console.error('error fetching user repos', error);
@@ -70,6 +66,8 @@ const GithubProvider = ({ children }) => {
     const toggleError = (show = false, msg = "") => {
         setError({ show, msg });
     };
+
+    useEffect(checkRequests, []);
 
     return (
         <GithubContext.Provider value={{ error, followers, githubUser, isLoading, searchGithub, repos, requests }}>
