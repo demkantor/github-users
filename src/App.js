@@ -7,14 +7,17 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 const App = () => {
 
     return (
-        <Router>
-            <Switch>
-                <Route exact path="/" component={Dashboard} />
-                <Route exact path="/login" component={Login} />
-                <Route path="*" component={Error} />
-            </Switch>
-            
-        </Router>
+        <AuthWrapper>
+            <Router>
+                <Switch>
+                    <PrivateRoute exact path="/">
+                        <Dashboard />
+                    </PrivateRoute>
+                    <Route exact path="/login" component={Login} />
+                    <Route path="*" component={Error} />
+                </Switch>
+            </Router>
+        </AuthWrapper>
     );
 };
 
