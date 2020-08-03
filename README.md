@@ -10,3 +10,5 @@
     FusionCharts
     GitHub API
     Auth0 authentication
+
+Try it out here! [GitHub User Search](https://search-github-users-by-username.netlify.app).
